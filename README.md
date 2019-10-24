@@ -1,2 +1,2 @@
 # AmazonLite
-An eCommerce site
+An eCommerce site, an Amazon clone.
