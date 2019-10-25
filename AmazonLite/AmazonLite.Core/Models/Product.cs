@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AmazonLite.Core.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public string Id { get; set; }
+        
         [StringLength(20)]
         [DisplayName("Product")]
         public string Name { get; set; }
@@ -20,10 +20,7 @@ namespace AmazonLite.Core.Models
         public string  Category { get; set; }
         public int Image { get; set; }
 
-        public Product()
-        {
-            this.Id = Guid.NewGuid().ToString();
-    }
+        
     }
     
 }

@@ -1,36 +1,39 @@
-﻿using System;
+﻿using AmazonLite.Core.Contracts;
+using AmazonLite.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Caching;
-using AmazonLite.Core.Models;
 
 namespace AmazonLite.DataAccess.InMemory
 {
-    public class ProductCategoryRepo
+    public class InMemoryRepo<T> : IRepo<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
-        List<ProductCategory> productcat;
-        public ProductCategoryRepo()
+        List<T> items;
+        string ClassName;
+        public InMemoryRepo()
         {
-            productcat = cache["productCategory"] as List<ProductCategory>;
-            if (productcat == null)
+            ClassName = typeof(T).Name;
+            items = cache[ClassName] as List<T>;
+            if (items == null)
             {
-                productcat = new List<ProductCategory>();
+                items = new List<T>();
             }
         }
         public void Commit()
         {
-            cache["productCategory"] = productcat;
+            cache[ClassName] = items;
         }
-        public void Insert(ProductCategory p)
+        public void Insert(T p)
         {
-            productcat.Add(p);
+            items.Add(p);
         }
-        public void Update(ProductCategory product)
+        public void Update(T product)
         {
-            ProductCategory ProToUpdate = productcat.Find(p => p.Id == product.Id);
+            T ProToUpdate = items.Find(p => p.Id == product.Id);
             if (ProToUpdate != null)
             {
                 ProToUpdate = product;
@@ -42,9 +45,9 @@ namespace AmazonLite.DataAccess.InMemory
 
 
         }
-        public ProductCategory Find(string Id)
+        public T Find(string Id)
         {
-            ProductCategory product = productcat.Find(p => p.Id == Id);
+            T product = items.Find(p => p.Id == Id);
             if (product != null)
             {
                 return product;
@@ -54,18 +57,18 @@ namespace AmazonLite.DataAccess.InMemory
                 throw new Exception("Product No Found");
             }
         }
-        public IQueryable<ProductCategory> Collection()
+        public IQueryable<T> Collection()
         {
-            return productcat.AsQueryable();
+            return items.AsQueryable();
 
 
         }
         public void Delete(string Id)
         {
-            ProductCategory producttodel = productcat.Find(p => p.Id == Id);
+            T producttodel = items.Find(p => p.Id == Id);
             if (producttodel != null)
             {
-                productcat.Remove(producttodel);
+                items.Remove(producttodel);
             }
             else
             {
@@ -74,5 +77,6 @@ namespace AmazonLite.DataAccess.InMemory
         }
 
 
-    }
+    
+}
 }
