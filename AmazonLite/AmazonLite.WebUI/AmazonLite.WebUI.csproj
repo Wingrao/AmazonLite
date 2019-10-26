@@ -214,8 +214,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProductCategoryManagerController.cs" />
-    <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -290,18 +288,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\ProductManager\Index.cshtml" />
-    <Content Include="Views\ProductManager\Create.cshtml" />
-    <Content Include="Views\ProductManager\Edit.cshtml" />
-    <Content Include="Views\ProductManager\Delete.cshtml" />
-    <Content Include="Views\ProductCategoryManager\Index.cshtml" />
-    <Content Include="Views\ProductCategoryManager\Create.cshtml" />
-    <Content Include="Views\ProductCategoryManager\Edit.cshtml" />
-    <Content Include="Views\ProductCategoryManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ProductCategory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -310,24 +299,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AmazonLite.Core\AmazonLite.Core.csproj">
-      <Project>{731abef5-1708-4547-9042-fb32469b11ee}</Project>
-      <Name>AmazonLite.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AmazonLite.DataAccess.InMemory\AmazonLite.DataAccess.InMemory.csproj">
-      <Project>{4f396e3d-a118-4afe-a1bd-9d42128b7d08}</Project>
-      <Name>AmazonLite.DataAccess.InMemory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AmazonLite.DataAccess.SQL\AmazonLite.DataAccess.SQL.csproj">
-      <Project>{96ad2de9-6e61-45fd-b40e-f497f895daac}</Project>
-      <Name>AmazonLite.DataAccess.SQL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AmazonLite.Services\AmazonLite.Services.csproj">
-      <Project>{0b8e8c85-d21b-49c3-8fce-114354a31952}</Project>
-      <Name>AmazonLite.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

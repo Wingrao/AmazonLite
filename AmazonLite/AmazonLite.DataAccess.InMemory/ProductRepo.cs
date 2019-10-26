@@ -8,7 +8,7 @@ using AmazonLite.Core.Models;
 
 namespace AmazonLite.DataAccess.InMemory
 {
-    public class ProductRepo
+    class ProductRepo
     {
         ObjectCache cache = MemoryCache.Default;
         List<Product> products;
@@ -28,9 +28,9 @@ namespace AmazonLite.DataAccess.InMemory
         {
             products.Add(p);
         }
-        public void Update(Product product)
+        public void update(Product product)
         {
-            Product ProToUpdate = products.Find(p => p.Id == product.Id);
+            Product ProToUpdate = products.Find(p => p.Id == product.id);
             if (ProToUpdate != null)
             {
                 ProToUpdate = product;
@@ -42,7 +42,7 @@ namespace AmazonLite.DataAccess.InMemory
            
 
         }
-        public Product Find(string Id)
+        public Product find(string Id)
         {
             Product product = products.Find(p => p.Id ==Id);
             if (product != null)
@@ -60,7 +60,7 @@ namespace AmazonLite.DataAccess.InMemory
 
 
         }
-        public void Delete(string Id)
+        public void delete(string Id)
         {
             Product producttodel = products.Find(p => p.Id == Id);
             if (producttodel != null)
