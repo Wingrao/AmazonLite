@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace AmazonLite.Core.Models
 {
-    public class ProductCategory : BaseEntity
+    public class ProductCategory
     {
-        
+        public string Id { get; set; }
         public string Category { get; set; }
 
-        
+        public ProductCategory()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
     }
 }

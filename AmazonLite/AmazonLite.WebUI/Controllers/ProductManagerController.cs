@@ -6,18 +6,17 @@ using System.Web.Mvc;
 using AmazonLite.Core.Models;
 using AmazonLite.DataAccess.InMemory;
 using AmazonLite.Core.ViewModel;
-using AmazonLite.Core.Contracts;
 
 namespace AmazonLite.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        IRepo<Product> context;
-        IRepo<ProductCategory> productcats;
-        public ProductManagerController(IRepo<Product> ProductContext , IRepo<ProductCategory> ProductCatContext)
+        ProductRepo context;
+        ProductCategoryRepo productcats;
+        public ProductManagerController()
         {
-            context = ProductContext;
-            productcats = ProductCatContext;
+            context = new ProductRepo();
+            productcats = new ProductCategoryRepo();
         } 
         // GET: ProductManager
         public ActionResult Index()
